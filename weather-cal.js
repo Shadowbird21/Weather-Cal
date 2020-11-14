@@ -31,7 +31,7 @@ const settings = {
     locale: ""
     
     // Set to imperial for Fahrenheit, or metric for Celsius
-    ,units: "imperial"
+    ,units: "metric"
 
     // The size of the widget preview in the app.
     ,preview: "large"
