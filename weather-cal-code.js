@@ -1641,9 +1641,6 @@ async function makeWidget(settings, name, iCloudInUse) {
 
   // Provide a battery SFSymbol with accurate level drawn on top of it.
   function provideBatteryIcon() {
-    
-    // If we're charging, show the charging icon.
-    if (Device.isCharging()) { return SFSymbol.named("battery.100.bolt").image }
   
     // Set the size of the battery icon.
     const batteryWidth = 87
@@ -1655,8 +1652,28 @@ async function makeWidget(settings, name, iCloudInUse) {
     draw.respectScreenScale = true
     draw.size = new Size(batteryWidth, batteryHeight)
   
-    // Draw the battery.
-    draw.drawImageInRect(SFSymbol.named("battery.0").image, new Rect(0, 0, batteryWidth, batteryHeight))
+    // If we're charging, show the charging icon.
+    if (Device.isCharging()) {
+      // Determine if our image exists.
+      const dirPath = files.joinPath(files.documentsDirectory(), "Weather Cal")
+      const path = files.joinPath(dirPath, "battery.0.bolt.png")
+      const exists = files.fileExists(path)
+  
+      // If it exists, load from file.
+      if (exists) {
+        if (iCloudInUse) { await files.downloadFileFromiCloud(path) }
+        // Draw the battery.
+        draw.drawImageInRect(files.readImage(path), new Rect(0, 0, batteryWidth, batteryHeight))
+        
+      // But if we're running in app, prompt the user for the image.
+      } else {
+        return SFSymbol.named("battery.100.bolt").image
+      }
+      
+    } else {
+      // Draw the battery.
+      draw.drawImageInRect(SFSymbol.named("battery.0").image, new Rect(0, 0, batteryWidth, batteryHeight))
+    }
   
     // Match the battery level values to the SFSymbol.
     const x = batteryWidth*0.1525
