@@ -114,7 +114,7 @@ const settings = {
     ,staticDateSize: "small"
 
     // Determine the date format for each date type. See docs.scriptable.app/dateformatter
-    ,smallDateFormat: "EEEE, MMMM d"
+    ,smallDateFormat: "EEEE, d. MMMM"
     ,largeDateLineOne: "EEEE,"
     ,largeDateLineTwo: "MMMM d"
   },
@@ -173,7 +173,7 @@ const settings = {
   sunrise: {
   
     // How many minutes before/after sunrise or sunset to show this element. 0 for always.
-    showWithin: 0
+    showWithin: 60
   },
 
   // WEATHER
@@ -234,7 +234,7 @@ const settings = {
 
 // Names of Weather Cal elements.
 const codeFilename = "Weather Cal code"
-const gitHubUrl = "https://raw.githubusercontent.com/mzeryck/Weather-Cal/main/weather-cal-code.js"
+const gitHubUrl = "https://raw.githubusercontent.com/Shadowbird21/Weather-Cal/main/weather-cal-code.js"
 
 // Determine if the user is using iCloud.
 let files = FileManager.local()
