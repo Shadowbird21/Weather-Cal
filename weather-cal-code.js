@@ -335,6 +335,7 @@ async function makeWidget(settings, name, iCloudInUse) {
       right() { return right },
       center() { return center },
       date() { return date },
+      time() { return time },
       greeting() { return greeting },
       events() { return events },
       reminders() { return reminders },
@@ -1092,6 +1093,33 @@ async function makeWidget(settings, name, iCloudInUse) {
       df.dateFormat = dateSettings.largeDateLineTwo
       let dateTwo = provideText(df.string(currentDate), dateTwoStack, textFormat.largeDate2)
       dateTwoStack.setPadding(0, padding, padding, padding)
+    }
+  }
+  
+  // Display the date on the widget.
+  async function time(column) {
+  
+    // Get the settings.
+    const timeSettings = settings.time
+
+    // Set up the date formatter and set its locale.
+    let df = new DateFormatter()
+    df.locale = locale
+  
+    // Show small if it's hard coded, or if it's dynamic and events are visible.
+    if (timeSettings.staticDateSize == "small") {
+      let timeStack = align(column)
+      timeStack.setPadding(padding, padding, padding, padding)
+
+      df.dateFormat = timeSettings.smallTimeFormat
+      let timeText = provideText(df.string(currentDate), timeStack, textFormat.smallTime)
+    
+    // Otherwise, show the large date.
+    } else {
+      let timeStack = align(column)
+      df.dateFormat = timeSettings.largeTimeFormat
+      let timeText = provideText(df.string(currentDate), timeStack, textFormat.largeTime)
+      timeStack.setPadding(padding/2, padding, 0, padding)
     }
   }
 
