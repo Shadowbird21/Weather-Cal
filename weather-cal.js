@@ -124,7 +124,7 @@ const settings = {
   time: {
 
     // Should the time be displayed large or small?
-    ,staticTimeSize: "large"
+    staticTimeSize: "large"
 
     // Determine the time format. See docs.scriptable.app/dateformatter
     ,timeFormat: "H:mm"
