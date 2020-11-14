@@ -1102,8 +1102,8 @@ async function makeWidget(settings, name, iCloudInUse) {
     function makeGreeting() {
       const hour = currentDate.getHours()
       if (hour    < 5)  { return localizedText.nightGreeting }
-      if (hour    < 12) { return localizedText.morningGreeting }
-      if (hour-12 < 5)  { return localizedText.afternoonGreeting }
+      if (hour    < 11) { return localizedText.morningGreeting }
+      if (hour-12 < 6)  { return localizedText.afternoonGreeting }
       if (hour-12 < 10) { return localizedText.eveningGreeting }
       return localizedText.nightGreeting
     }
@@ -1214,7 +1214,7 @@ async function makeWidget(settings, name, iCloudInUse) {
     
       // If we show the length as time, add an en dash and the time.
       if (eventSettings.showEventLength == "time") { 
-        timeText += "–" + formatTime(event.endDate) 
+        timeText += " – " + formatTime(event.endDate) 
       
       // If we should it as a duration, add the minutes.
       } else if (eventSettings.showEventLength == "duration") {
