@@ -745,8 +745,8 @@ async function makeWidget(settings, name, iCloudInUse) {
       // If it's an all-day event, only show if the setting is active.
       if (event.isAllDay) { return eventSettings.showAllDay }
 
-      // Otherwise, return the event if it's in the future.
-      return (event.startDate.getTime() > currentDate.getTime())
+      // Otherwise, return the event if it's end time is in the future.
+      return (event.endDate.getTime() > currentDate.getTime())
     }
   
     // Determine which events to show, and how many.
