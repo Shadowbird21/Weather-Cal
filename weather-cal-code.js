@@ -1651,25 +1651,24 @@ async function makeWidget(settings, name, iCloudInUse) {
     draw.opaque = false
     draw.respectScreenScale = true
     draw.size = new Size(batteryWidth, batteryHeight)
-    
-    const files = iCloudInUse ? FileManager.iCloud() : FileManager.local()
   
     // If we're charging, show the charging icon.
     if (Device.isCharging()) {
-      // Determine if our image exists.
-      const dirPath = files.joinPath(files.documentsDirectory(), "Weather Cal")
-      const path = files.joinPath(dirPath, "battery.0.bolt.png")
-      const exists = files.fileExists(path)
-  
-      // If it exists, load from file.
-      if (exists) {
-        if (iCloudInUse) { await files.downloadFileFromiCloud(path) }
-        // Draw the battery.
-        draw.drawImageInRect(files.readImage(path), new Rect(0, 0, batteryWidth, batteryHeight))
-        
-      // But if we're running in app, prompt the user for the image.
+      if (!files) {
       } else {
-        return SFSymbol.named("battery.100.bolt").image
+        const boltPath = files.joinPath(dirPath, "battery.0.bolt.png")
+        const boltExists = files.fileExists(boltPath)
+  
+        // If it exists, load from file.
+        if (boltExists) {
+          if (iCloudInUse) { await files.downloadFileFromiCloud(boltPath) }
+          // Draw the battery.
+          draw.drawImageInRect(files.readImage(path), new Rect(0, 0, batteryWidth, batteryHeight))
+        
+        // But if we're running in app, prompt the user for the image.
+        } else {
+          return SFSymbol.named("battery.100.bolt").image
+        }
       }
       
     } else {
