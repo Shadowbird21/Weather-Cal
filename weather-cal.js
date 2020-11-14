@@ -80,20 +80,20 @@ const settings = {
   localization: {
   
     // The text shown if you add a greeting item to the layout.
-    nightGreeting: "Good night."
-    ,morningGreeting: "Good morning."
-    ,afternoonGreeting: "Good afternoon."
-    ,eveningGreeting: "Good evening."
+    nightGreeting: "Gute Nacht"
+    ,morningGreeting: "Guten Morgen"
+    ,afternoonGreeting: "Guten Tag"
+    ,eveningGreeting: "Guten Abend"
   
     // The text shown if you add a future weather item to the layout, or tomorrow's events.
-    ,nextHourLabel: "Next hour"
-    ,tomorrowLabel: "Tomorrow"
+    ,nextHourLabel: "Später"
+    ,tomorrowLabel: "Morgen"
 
     // Shown when noEventBehavior is set to "message".
-    ,noEventMessage: "Enjoy the rest of your day."
+    ,noEventMessage: "Es gibt keine weitern Ereignisse. Genieße den Rest deines Tages."
   
     // The text shown after the hours and minutes of an event duration.
-    ,durationMinute: "m"
+    ,durationMinute: "mm"
     ,durationHour: "h"   
   },
  
@@ -108,7 +108,7 @@ const settings = {
   date: {
 
     // If set to true, date will become smaller when events are displayed.
-    dynamicDateSize: true
+    dynamicDateSize: false
 
     // If the date is not dynamic, should it be large or small?
     ,staticDateSize: "small"
@@ -221,7 +221,7 @@ const settings = {
     largeDate2:  { size: 30, color: "", font: "light" },
     
     smallTime:   { size: 17, color: "", font: "semibold" },
-    largeTime:   { size: 30, color: "", font: "light" },
+    largeTime:   { size: 30, color: "", font: "semibold" },
   
     greeting:    { size: 30, color: "", font: "semibold" },
     
