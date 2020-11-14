@@ -1651,6 +1651,8 @@ async function makeWidget(settings, name, iCloudInUse) {
     draw.opaque = false
     draw.respectScreenScale = true
     draw.size = new Size(batteryWidth, batteryHeight)
+    
+    const files = iCloudInUse ? FileManager.iCloud() : FileManager.local()
   
     // If we're charging, show the charging icon.
     if (Device.isCharging()) {
