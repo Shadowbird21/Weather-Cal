@@ -219,8 +219,12 @@ const settings = {
     smallDate:   { size: 17, color: "", font: "semibold" },
     largeDate1:  { size: 30, color: "", font: "light" },
     largeDate2:  { size: 30, color: "", font: "light" },
+    
+    smallTime:   { size: 17, color: "", font: "semibold" },
+    largeTime:   { size: 30, color: "", font: "light" },
   
     greeting:    { size: 30, color: "", font: "semibold" },
+    
     eventLabel:  { size: 14, color: "", font: "semibold" },
     eventTitle:  { size: 14, color: "", font: "semibold" },
     eventTime:   { size: 14, color: "ffffffcc", font: "" },
