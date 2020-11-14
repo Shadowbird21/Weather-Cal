@@ -1105,19 +1105,17 @@ async function makeWidget(settings, name, iCloudInUse) {
     // Set up the date formatter and set its locale.
     let df = new DateFormatter()
     df.locale = locale
-  
-    // Show small if it's hard coded, or if it's dynamic and events are visible.
-    if (timeSettings.staticDateSize == "small") {
-      let timeStack = align(column)
-      timeStack.setPadding(padding, padding, padding, padding)
-
-      df.dateFormat = timeSettings.smallTimeFormat
-      let timeText = provideText(df.string(currentDate), timeStack, textFormat.smallTime)
+    df.dateFormat = timeSettings.timeFormat
     
-    // Otherwise, show the large date.
+    let timeStack = align(column)
+  
+    // Show small time if it's hard coded.
+    if (timeSettings.staticTimeSize == "small") {
+      let timeText = provideText(df.string(currentDate), timeStack, textFormat.smallTime)
+      timeStack.setPadding(padding, padding, padding, padding)
+    
+    // Otherwise, show the large time.
     } else {
-      let timeStack = align(column)
-      df.dateFormat = timeSettings.largeTimeFormat
       let timeText = provideText(df.string(currentDate), timeStack, textFormat.largeTime)
       timeStack.setPadding(padding/2, padding, 0, padding)
     }
@@ -1129,10 +1127,10 @@ async function makeWidget(settings, name, iCloudInUse) {
     // This function makes a greeting based on the time of day.
     function makeGreeting() {
       const hour = currentDate.getHours()
-      if (hour    < 5)  { return localizedText.nightGreeting }
-      if (hour    < 11) { return localizedText.morningGreeting }
-      if (hour-12 < 6)  { return localizedText.afternoonGreeting }
-      if (hour-12 < 10) { return localizedText.eveningGreeting }
+      if (hour < 5)  { return localizedText.nightGreeting }
+      if (hour < 11) { return localizedText.morningGreeting }
+      if (hour < 18)  { return localizedText.afternoonGreeting }
+      if (hour < 22) { return localizedText.eveningGreeting }
       return localizedText.nightGreeting
     }
   
