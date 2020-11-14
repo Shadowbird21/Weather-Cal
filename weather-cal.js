@@ -119,6 +119,17 @@ const settings = {
     ,largeDateLineTwo: "MMMM d"
   },
   
+  // TIME
+  // ====
+  time: {
+
+    // Should the time be displayed large or small?
+    ,staticTimeSize: "large"
+
+    // Determine the time format. See docs.scriptable.app/dateformatter
+    ,timeFormat: "H:mm"
+  },
+  
   // EVENTS
   // ======
   events: {
