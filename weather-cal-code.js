@@ -1500,14 +1500,7 @@ async function makeWidget(settings, name, iCloudInUse) {
     
     // Change the battery icon to red if battery level is less than 20%.
     const batteryLevel = Math.round(Device.batteryLevel() * 100)
-    if (batteryLevel > 20) {
-      batteryIcon.tintColor = new Color(textFormat.battery.color || textFormat.defaultText.color)
-    } else if (Device.isCharging()) {
-      batteryIcon.tintColor = Color.green()
-    } else {
-      batteryIcon.tintColor = Color.red()
-    }
-    
+
     // Format the rest of the item.
     batteryStack.addSpacer(padding * 0.6)
     provideText(batteryLevel + "%", batteryStack, textFormat.battery)
@@ -1682,7 +1675,13 @@ async function makeWidget(settings, name, iCloudInUse) {
     let barPath = new Path()
     barPath.addRoundedRect(new Rect(x, y, current, height), radius, radius)
     draw.addPath(barPath)
-    draw.setFillColor(Color.black())
+    if (level > 20) {
+      draw.setFillColor(new Color(textFormat.battery.color || textFormat.defaultText.color))
+    } else if (Device.isCharging()) {
+      draw.setFillColor(Color.green())
+    } else {
+      draw.setFillColor(Color.red())
+    }
     draw.fillPath()
     return draw.getImage()
     
