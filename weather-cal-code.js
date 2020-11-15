@@ -1353,6 +1353,7 @@ async function makeWidget(settings, name, iCloudInUse) {
   
     // Get the weather settings.
     const weatherSettings = settings.weather
+    const widgetSettings = settings.widget
 
     // Requirements: weather and sunrise
     if (!data.weather) { await setupWeather() }
@@ -1388,7 +1389,7 @@ async function makeWidget(settings, name, iCloudInUse) {
     // Show the current temperature.
     const tempStack = align(currentWeatherStack)
     tempStack.setPadding(0, padding, 0, padding)
-    const tempText = Math.round(data.weather.currentTemp) + "°"
+    const tempText = Math.round(data.weather.currentTemp) + "°" + (widgetSettings.units === "metric" ? "C" : "F")
     const temp = provideText(tempText, tempStack, textFormat.largeTemp)
   
     // If we're not showing the high and low, end it here.
