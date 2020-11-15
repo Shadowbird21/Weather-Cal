@@ -1675,10 +1675,10 @@ async function makeWidget(settings, name, iCloudInUse) {
     let barPath = new Path()
     barPath.addRoundedRect(new Rect(x, y, current, height), radius, radius)
     draw.addPath(barPath)
-    if (level > 20) {
-      draw.setFillColor(new Color(textFormat.battery.color || textFormat.defaultText.color))
-    } else if (Device.isCharging()) {
+    if (Device.isCharging()) {
       draw.setFillColor(Color.green())
+    } else if (level > 20) {
+      draw.setFillColor(new Color(textFormat.battery.color || textFormat.defaultText.color))
     } else {
       draw.setFillColor(Color.red())
     }
