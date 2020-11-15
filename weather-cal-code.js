@@ -1361,7 +1361,7 @@ async function makeWidget(settings, name, iCloudInUse) {
 
     // Set up the current weather stack.
     let currentWeatherStack = column.addStack()
-    currentWeatherStack.layoutHorizontally()
+    currentWeatherStack.layoutVertically()
     currentWeatherStack.setPadding(0, 0, 0, 0)
     currentWeatherStack.url = "https://weather.com/weather/today/l/" + data.location.latitude + "," + data.location.longitude
   
