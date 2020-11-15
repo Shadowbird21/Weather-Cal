@@ -1377,7 +1377,7 @@ async function makeWidget(settings, name, iCloudInUse) {
     let mainCondition = mainConditionStack.addImage(provideConditionSymbol(data.weather.currentCondition,isNight(currentDate)))
     mainCondition.imageSize = new Size(22,22)
     tintIcon(mainCondition, textFormat.largeTemp)
-    mainConditionStack.setPadding(weatherSettings.showLocation ? 0 : padding, padding, 0, padding)
+    mainConditionStack.setPadding(0, 0, 0, 0)
   
     // If we're showing the description, add it.
     if (weatherSettings.showCondition) {
@@ -1388,7 +1388,7 @@ async function makeWidget(settings, name, iCloudInUse) {
 
     // Show the current temperature.
     const tempStack = align(currentWeatherStack)
-    tempStack.setPadding(0, padding, 0, padding)
+    tempStack.setPadding(0, 0, 0, 0)
     const tempText = Math.round(data.weather.currentTemp) + "°" + (widgetSettings.units === "metric" ? "C" : "F")
     const temp = provideText(tempText, tempStack, textFormat.largeTemp)
   
